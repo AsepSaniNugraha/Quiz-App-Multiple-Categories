@@ -45,6 +45,7 @@ const Result = ({ questions, answers, category }) => {
                         localStorage.removeItem("quiz_category");
                         localStorage.removeItem("quiz_questions");
                         localStorage.removeItem("quiz_answers");
+                        localStorage.removeItem("quiz_current");
                         navigate("/")
                     }}
                     className="w-12 h-12 bg-(--primary-color) text-(--text-secondary-color) flex items-center justify-center rounded-full mt-10 mx-auto hover:scale-105 transition">
