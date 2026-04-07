@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Summary from './pages/Summary';
@@ -15,7 +15,7 @@ const App = () => {
     setAnswers(new Array(subject.questions.length).fill(null));
   };
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={
           <Home
@@ -41,7 +41,7 @@ const App = () => {
             category={category} />
         } />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
