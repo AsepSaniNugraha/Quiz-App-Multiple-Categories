@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Quiz from './pages/Quiz';
+import Summary from './pages/Summary';
+import Result from './pages/Result';
+
+const App = () => {
+  const [category, setCategory] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const loadCategory = (subject) => {
+    setCategory(subject.key);
+    setQuestions(subject.questions);
+    setAnswers(new Array(subject.questions.length).fill(null));
+  };
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={
+          <Home
+            loadCategory={loadCategory} />
+        } />
+        <Route path='/quiz' element={
+          <Quiz
+            category={category}
+            questions={questions}
+            answers={answers}
+            setAnswers={setAnswers} />
+        } />
+        <Route path='/summary' element={
+          <Summary
+            questions={questions}
+            answers={answers}
+            category={category} />
+        } />
+        <Route path='/result' element={
+          <Result
+            questions={questions}
+            answers={answers}
+            category={category} />
+        } />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+export default App
