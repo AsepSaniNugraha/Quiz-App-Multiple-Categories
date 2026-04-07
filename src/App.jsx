@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
@@ -13,7 +13,21 @@ const App = () => {
     setCategory(subject.key);
     setQuestions(subject.questions);
     setAnswers(new Array(subject.questions.length).fill(null));
+    localStorage.setItem("quiz_category", subject.key);
+    localStorage.setItem("quiz_questions", JSON.stringify(subject.questions));
+    localStorage.setItem("quiz_answers", JSON.stringify(new Array(subject.questions.length).fill(null)))
   };
+
+  useEffect(() => {
+    const savedQuestions = localStorage.getItem("quiz_questions");
+    const savedAnswers = localStorage.getItem("quiz_answers");
+    const savedCategory = localStorage.getItem("quiz_category");
+    if (savedQuestions && savedAnswers && savedCategory) {
+      setQuestions(JSON.parse(savedQuestions));
+      setAnswers(JSON.parse(savedAnswers));
+      setCategory(savedCategory);
+    }
+  }, [])
   return (
     <HashRouter>
       <Routes>

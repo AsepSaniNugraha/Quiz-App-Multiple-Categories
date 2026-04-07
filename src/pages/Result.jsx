@@ -41,7 +41,12 @@ const Result = ({ questions, answers, category }) => {
                 </div>
                 <button
                     type="button"
-                    onClick={() => navigate("/")}
+                    onClick={() => {
+                        localStorage.removeItem("quiz_category");
+                        localStorage.removeItem("quiz_questions");
+                        localStorage.removeItem("quiz_answers");
+                        navigate("/")
+                    }}
                     className="w-12 h-12 bg-(--primary-color) text-(--text-secondary-color) flex items-center justify-center rounded-full mt-10 mx-auto hover:scale-105 transition">
                     <FaArrowLeft className='text-xl' />
                 </button>

@@ -16,6 +16,7 @@ const QuestionCard = ({
     total,
     selectedAnswer,
     onSelect }) => {
+    if (!question) return null;
     const refs = useRef([]);
     const [position, setPosition] = useState(0);
     const [height, setHeight] = useState(0);
