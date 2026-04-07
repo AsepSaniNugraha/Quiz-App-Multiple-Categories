@@ -36,7 +36,7 @@ const QuestionCard = ({
         <div>
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <p className="text-3xl font-bold capitalize">
+                    <p className="text-3xl font-bold capitalize text-(--text-primary-color)">
                         {category}
                     </p>
                     <p className="text-(--text-muted-color) text-base">

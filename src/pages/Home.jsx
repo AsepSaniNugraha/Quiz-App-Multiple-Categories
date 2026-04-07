@@ -28,6 +28,10 @@ const Home = ({ loadCategory }) => {
     ];
     const [selectedSubject, setSelectedSubject] = useState(categories[0]);
     const handleStart = () => {
+        localStorage.removeItem("quiz_category");
+        localStorage.removeItem("quiz_questions");
+        localStorage.removeItem("quiz_answers");
+        localStorage.removeItem("quiz_current");
         loadCategory(selectedSubject);
         navigate("/quiz");
     };
